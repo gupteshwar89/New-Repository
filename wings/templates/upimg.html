@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+   <!-- <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="images" multiple>
+        <button>Upload</button>
+    </form>
+    <hr>
+    
+    {% for img in images %}
+    <img src="{{img.images.url}}" alt="Image">
+    {% endfor %}
+-->
+
+
+
+{%block content%}
+
+<br>
+<form enctype='multipart/form-data' action="upload/" method='POST' class="dropzone dz" id="my-dropzone" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="fallback">
+      <input name="file" type="submit" multiple value="Upload Images" />
+
+    </div>
+</form>
+{%endblock%}

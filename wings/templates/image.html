@@ -1,0 +1,329 @@
+{% extends 'base.html'%}
+
+{% block title %} Patient Gallary {% endblock title %}
+
+{% block Action %} action="/uploadimg" {% endblock Action %}
+
+
+
+{% block content %}
+
+
+
+<div class="image">
+  <button type="submit" class="btn btn-primary btn-sm">
+      {% block Btn-image %}
+      <a  href="{% url 'upload_images' %}">
+      <i class="fa fa-upload"></i>&nbsp;&nbsp;UpLoad Images
+      </a>
+      {% endblock Btn-image %}
+  </button>
+</div>
+
+<centre>
+  <table class="table table-bordered table-sm mt-4 " style="text-align:centre;font-size:12px" value="{patient.name}" >
+      <thead class="table-primary">
+          <tr>
+              <th>Name</th>
+              <th>Image</th>
+           
+            </tr>
+          </thead>
+
+          {% for patient in patients %}
+
+          <tr id="chk_td">
+              <td>{{patient.name}}</td>
+              <td><img src="{{patient.image.url}}" width="400"/></td>
+                
+            </tr>
+          {% endfor %}
+          
+	
+	</tbody>
+</table>	
+</div>
+
+
+<!--
+
+
+<head>
+	<title>Lightbox Gallery</title>
+	<link rel="stylesheet"
+		type="text/css"
+		href="lightbox2/dist/css/lightbox.min.css">
+	<script src=
+"lightbox2/dist/js/lightbox-plus-jquery.min.js">
+	</script>
+	<style>
+		body {
+			text-align: center;
+		}
+		
+		h2 {
+			color: green;
+		}
+		
+		.gallery {
+			margin: 10px 40px;
+		}
+		
+		.gallery img {
+			width: 200px;
+			height: 50px;
+			transition: 1s;
+			padding: 5px;
+		}
+		
+		.gallery img:hover {
+			filter: drop-shadow(4px 4px 6px gray);
+			transform: scale(1.1);
+		}
+	</style>
+</head>
+
+<body>
+	<h2>GeeksforGeeks</h2>
+	<b>A Computer Science Portal for Geeks</b>
+	<div class="gallery">
+		<a href=
+"https://media.geeksforgeeks.org/wp-content/uploads/20200318142254/html9.png"
+		data-lightbox="mygallery">
+			<img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20200318143104/html10.png">
+		</a>
+		<a href=
+"https://media.geeksforgeeks.org/wp-content/uploads/20200318142245/CSS8.png"
+		data-lightbox="mygallery">
+			<img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20200318143101/CSS9.png">
+		</a>
+		<a href=
+"https://media.geeksforgeeks.org/wp-content/uploads/20200318142240/Bootstrap5.png"
+		data-lightbox="mygallery">
+			<img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20200318143058/Bootstrap6.png">
+		</a>
+		<a href=
+"https://media.geeksforgeeks.org/wp-content/uploads/20200318142257/JavaScript2.png"
+		data-lightbox="mygallery">
+			<img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20200318143106/JavaScript3.png">
+		</a>
+		<a href=
+"https://media.geeksforgeeks.org/wp-content/uploads/20200318142303/jquery.png"
+		data-lightbox="mygallery">
+			<img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20200318143108/jquery4.png">
+		</a>
+		<a href=
+"https://media.geeksforgeeks.org/wp-content/uploads/20200318142309/php7.png"
+		data-lightbox="mygallery">
+			<img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20200318143112/php8.png">
+		</a>
+	</div>
+</body>-->
+
+
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial;
+  }
+  
+  /* The grid: Four equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+  }
+  
+  /* Style the images inside the grid */
+  .column img {
+    opacity: 0.8; 
+    cursor: pointer; 
+  }
+  
+  .column img:hover {
+    opacity: 1;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* The expanding image container */
+  .container {
+    position: relative;
+    display: none;
+  }
+  
+  /* Expanding image text */
+  #imgtext {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+  }
+  
+  /* Closable button inside the expanded image */
+  .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+  }
+  </style>
+  </head>
+  <body>
+  
+  
+    
+  <!-- The four columns -->
+  <div class="row">
+    <div class="column">
+      <img src="/media/pexels-blaque-x-863963.jpg" alt="Nature" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/pexels-craig-adderley-1563355.jpg" alt="Snow" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media//pexels-craig-adderley-1563356.jpg" alt="Mountains" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media//pexels-laraine-davis-1580025.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
+    </div>
+  </div>
+  
+  <div class="container">
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+    <img id="expandedImg" style="width:100%">
+    <div id="imgtext"></div>
+  </div>
+  
+  
+  
+  <!-- The four columns -1-->
+  <div class="row">
+    <div class="column">
+      <img src="/media/pexels-blaque-x-863963.jpg" alt="Nature" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/pexels-matthew-montrone-1324803.jpg" alt="Snow" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/pexels-nick-collins-1266741.jpg" alt="Mountains" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/pexels-pixabay-60597.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
+    </div>
+  </div>
+  
+  <div class="container">
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+    <img id="expandedImg" style="width:100%">
+    <div id="imgtext"></div>
+  </div>
+  
+  
+  <!-- The four columns --2--->
+  <div class="row">
+    <div class="column">
+      <img src="/media/pexels-pixabay-60597.jpg" alt="Nature" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/pexels-pixabay-65894.jpg" alt="Snow" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/pexels-zahaoha-13224440.jpg" alt="Mountains" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/pexels-pixabay-70850.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
+    </div>
+  </div>
+  
+  <div class="container">
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+    <img id="expandedImg" style="width:100%">
+    <div id="imgtext"></div>
+  </div>
+  
+  
+  
+  <!-- The four columns -3---->
+  <div class="row">
+    <div class="column">
+      <img src="/media/img_nature.jpg" alt="Nature" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/img_snow.jpg" alt="Snow" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/img_mountains.jpg" alt="Mountains" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/img_lights.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
+    </div>
+  </div>
+  
+  <div class="container">
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+    <img id="expandedImg" style="width:100%">
+    <div id="imgtext"></div>
+  </div>
+  
+  
+  
+  <!-- The four columns -4---->
+  <div class="row">
+    <div class="column">
+      <img src="/media/pexels-pixabay-65894.jpg" alt="Nature" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/pexels-pixabay-15239.jpg" alt="Snow" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/pexels-nick-collins-1266741.jpg" alt="Mountains" style="width:100%" onclick="myFunction(this);">
+    </div>
+    <div class="column">
+      <img src="/media/pexels-matthew-montrone-1324803.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
+    </div>
+  </div>
+  
+  <div class="container">
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+    <img id="expandedImg" style="width:100%">
+    <div id="imgtext"></div>
+  </div>
+  
+  <script>
+  function myFunction(imgs) {
+    var expandImg = document.getElementById("expandedImg");
+    var imgText = document.getElementById("imgtext");
+    expandImg.src = imgs.src;
+    imgText.innerHTML = imgs.alt;
+    expandImg.parentElement.style.display = "block";
+  }
+  </script>
+  
+  </body>
+
+
+
+
+{% endblock %}

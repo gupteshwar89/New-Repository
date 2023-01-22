@@ -1,0 +1,171 @@
+{% extends 'base.html'%}
+<!------page content-------->
+{% block title %} Add Patient{% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body border-dark text-primary mt-5">
+                <span class="text-centre">Fill out the form Below</span>
+            </div>
+            <form action="{% url 'add_patient' %}" method="POST" autocomplete="off" enctype="multipart/form-data" class="card p-3 border-dark mt-3">
+                {% csrf_token %}
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">case_paper_no</span>
+                    <input type="number" class="form-control" name="case_paper_no" placeholder="Case Paper No" >
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">File No</span>
+                    <input type="number" class="form-control" name="file_no" placeholder="File No">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">Date</span>
+                    <input type="date" class="form-control" name="date" placeholder="Date">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">Name</span>
+                    <input type="text" class="form-control" name="name" placeholder="Name">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">age</span>
+                    <input type="number" class="form-control" name="age" placeholder="age">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">height</span>
+                    <input type="number" class="form-control" name="height" placeholder="height">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">weight</span>
+                    <input type="number" class="form-control" name="weight" placeholder="weight">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">address</span>
+                    <input type="text" class="form-control" name="address" placeholder="address">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">pin_code </span>
+                    <input type="number" class="form-control" name="pin_code" placeholder="Pin Code">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">telephone</span>
+                    <input type="number" class="form-control" name="telephone" placeholder="Telephone">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">office</span>
+                    <input type="text" class="form-control" name="office" placeholder="Office">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">phone</span>
+                    <input type="number" class="form-control" name="phone" placeholder="Phone">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">email</span>
+                    <input type="email" class="form-control" name="email" placeholder="Email">
+                </div>
+
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">qualification</span>
+                    <input type="text" class="form-control" name="qualification" placeholder="Qualification">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">occupation </span>
+                    <input type="text" class="form-control" name="occupation" placeholder="Occupation">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">reffered_By</span>
+                    <input type="text" class="form-control" name="reffered_by" placeholder="Reffered_By">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">diagnosis_provisional</span>
+                    <input type="text" class="form-control" name="diagnosis_provisional" placeholder="Dignosis_Provisional">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">Diagnosis_final</span>
+                    <input type="text" class="form-control" name="diagnosis_final" placeholder="Diagnosis_final">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">chief_complaints</span>
+                    <input type="text" class="form-control" name="chief_complaints" placeholder="Chief_Complaints">
+                </div>
+
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">duration</span>
+                    <input type="text" class="form-control" name="duration" placeholder="address">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">rx_taken</span>
+                    <input type="text" class="form-control" name="rx_taken" placeholder="Rx_taken">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">note</span>
+                    <input type="text" class="form-control" name="note" placeholder="Note">
+                </div>
+
+               
+
+                
+                <div class="input-group input-group-sm mb-3">
+                    <label class="input-group-text">gender</label>
+                    <select class="form-select" name="gender">
+                        {% block option %}
+                        <option value="" hidden="select the gender"></option>
+                        {% endblock option %}
+                        <option disabled></option>
+                        <option>M</option>
+                        <option>F</option>
+                    </select>
+                </div>
+
+
+                <div class="input-group input-group-sm mb-3">
+                    <label class="input-group-text">marital_status</label>
+                    <select class="form-select" name="marital_status">
+                        <option value="" hidden="select the gender"></option>
+                        <option disabled></option>
+                        <option>Single</option>
+                        <option>Married</option>
+                        <option>Widow</option>
+                        <option>Divorce</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+
+                <div class="input-group input-group-sm mb-3">
+                    <label class="input-group-text">food_type</label>
+                    <select class="form-select" name="foody_type">
+                        <option value="" hidden="select the gender"></option>
+                        <option disabled></option>
+                        <option>Vegetarian</option>
+                        <option>None-Vegetarian</option>
+                        <option>Eggitarian</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <textarea class="form-control" name="note" rows="7" placeholder="Description is Optional"></textarea>
+                </div>
+                <div class="d-grid gap-2 mt-2">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        {% block Btn-add %}
+                        <i class="fa fa-plus"></i>&nbsp;&nbsp;Add
+                        {% endblock Btn-add%}
+                    </button>
+                    <!-------Reset button in edit page--------->
+                    {% block Btn-reset %}{% endblock Btn-reset%}
+                    <a href="{% url 'backend' %}" class="btn btn-dark btn-sm"><i class="fa fa-chevron-left"> GoBack</i></a>
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    {% endblock content%}

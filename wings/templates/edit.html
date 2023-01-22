@@ -1,0 +1,186 @@
+{% extends 'base.html'%}
+<!------page content-------->
+{% block title %} edit Patient{% endblock title %}
+
+{% block Action %} action="/edit_patient" {% endblock Action %}
+
+<!--------------------------------Add button------------------>
+{% block Btn-add %}
+
+<i class="fa fa-hdd"></i>&nbsp;&nbsp;Save
+
+{% endblock Btn-add %}
+
+
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body border-dark text-primary mt-5">
+                <span class="text-centre">Fill out the form Below</span>
+            </div>
+            <form action="{% url 'add_patient' %}" method="POST" autocomplete="off" enctype="multipart/form-data" class="card p-3 border-dark mt-3">
+                {% csrf_token %}
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label" >case_paper_no</span>
+                    <input type="number" class="form-control" name="case_paper_no" placeholder="Case Paper No" value="{{p.case_paper_no}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label">File No</span>
+                    <input type="number" class="form-control" name="file_no" placeholder="File No" value="{{p.file_no}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label">Date</span>
+                    <input type="date" class="form-control" name="date" placeholder="Date" value="{{p.date}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label">Name</span>
+                    <input type="text" class="form-control" name="name" placeholder="Name"  value="{{p.name}}">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label">age</span>
+                    <input type="number" class="form-control" name="age" placeholder="age"  value="{{p.age}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label">height</span>
+                    <input type="number" class="form-control" name="height" placeholder="height"  value="{{p.height}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">weight</span>
+                    <input type="number" class="form-control" name="weight" placeholder="weight"  value="{{p.weight}}">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">address</span>
+                    <input type="text" class="form-control" name="address" placeholder="address"  value="{{p.address}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">pin_code </span>
+                    <input type="number" class="form-control" name="pin_code" placeholder="Pin Code"  value="{{p.pin_code}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">telephone</span>
+                    <input type="number" class="form-control" name="telephone" placeholder="Telephone"  value="{{p.telephone}}">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">office</span>
+                    <input type="text" class="form-control" name="office" placeholder="File No"  value="{{p.office}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">phone</span>
+                    <input type="number" class="form-control" name="phone" placeholder="Phone"  value="{{p.phone}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">email</span>
+                    <input type="email" class="form-control" name="email" placeholder="Email"  value="{{p.email}}">
+                </div>
+
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">qualification</span>
+                    <input type="text" class="form-control" name="qualification" placeholder="Qualification"  value="{{p.qualification}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">occupation </span>
+                    <input type="text" class="form-control" name="occupation" placeholder="Occupation"  value="{{p.occupation}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">reffered_By</span>
+                    <input type="text" class="form-control" name="reffered_by" placeholder="Reffered_By"  value="{{p.reffered_by}}">
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">diagnosis_provisional</span>
+                    <input type="text" class="form-control" name="diagnosis_provisional" placeholder="Dignosis_Provisional"  value="{{p.diagnosis_provisional}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">Diagnosis_final</span>
+                    <input type="text" class="form-control" name="diagnosis_final" placeholder="Diagnosis_final"  value="{{p.diagnosis_final}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">chief_complaints</span>
+                    <input type="text" class="form-control" name="chief_complaints" placeholder="Chief_Complaints"  value="{{p.chief_complaints}}">
+                </div>
+
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">duration</span>
+                    <input type="text" class="form-control" name="duration" placeholder="duration"  value="{{p.duration}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">rx_taken</span>
+                    <input type="text" class="form-control" name="rx_taken" placeholder="Rx_taken"  value="{{p.rx_taken}}">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">note</span>
+                    <input type="text" class="form-control" name="note" placeholder="Note"  value="{{p.note}}">
+                </div>
+
+               
+
+                
+                <div class="input-group input-group-sm mb-3">
+                    <label class="input-group-text">gender</label>
+                    <select class="form-select" name="gender">
+                        {% block option %}
+                        <option value="" hidden="select the gender"></option>
+                        {% endblock option %}
+                        <option disabled></option>
+                        <option>M</option>
+                        <option>F</option>
+                    </select>
+                </div>
+
+
+                <div class="input-group input-group-sm mb-3">
+                    <label class="input-group-text">marital_status</label>
+                    <select class="form-select" name="marital_status">
+                        <option value="" hidden="select the gender"></option>
+                        <option disabled></option>
+                        <option>Single</option>
+                        <option>Married</option>
+                        <option>Widow</option>
+                        <option>Divorce</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+
+                <div class="input-group input-group-sm mb-3">
+                    <label class="input-group-text">food_type</label>
+                    <select class="form-select" name="foody_type">
+                        <option value="" hidden="select the gender"></option>
+                        <option disabled></option>
+                        <option>Vegetarian</option>
+                        <option>None-Vegetarian</option>
+                        <option>Eggitarian</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <textarea class="form-control" name="note" rows="7" placeholder="Description is Optional"></textarea>
+                </div>
+                <div class="d-grid gap-2 mt-2">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa fa-plus"></i>&nbsp;&nbsp;Save
+                    </button>
+                    <!--------------------------Reset -Button---------------------------->
+                        {% block Btn-reset %}
+
+                    <button  type="reset" class="btn btn-secondary btn-sm"><i class="fa fa-sync-alt"></i>&nbsp;&nbsp;Reset</button>
+
+                        {% endblock Btn-reset %}
+
+                    <a href="{% url 'backend' %}" class="btn btn-dark btn-sm"><i class="fa fa-chevron-left">GoBack</i></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    {% endblock content%}

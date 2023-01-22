@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+
+{% block title %}All Patients List{% endblock title %}
+
+{% block nav-content %}
+<i class="fa fa-briefcase"></i>Patients
+{% endblock nav-content %}
+
+<!---------------Time----------------->
+{% block time %}
+
+<div class="col-sm">
+    <centre>
+        <span id="clock" style="color: #89cff0;"></span>
+    </centre>
+{% endblock time %}
+
+
+{% block btn-nav %}
+<a href="{% url 'logout' %}" class="btn btn-outline-danger btn-sm border-light text-light" id="btn_nav">Log Out</a>
+{% endblock btn-nav %}
+
+
+{% block content %}
+<div class="container">
+    <br><br>
+    <!---Add button and get username-- -->
+    <div class="d-flex justify-content-between" id="chk">
+        <a href="{% url 'add_patient' %}" class="btn btn-outline-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Add Patient</a>
+        <span>
+            WelCome:<strong><span class="text-primary">{{user.get_username}}</span></strong>
+        </span>
+    </div>
+
+
+
+
+     <!---Input Search--+-Butto search+--Button reset--->
+    <form>
+        <div class="input-group input-group-sm mb-3 mt-4">
+            <input name="query" type="text" class="form-control" placeholder="Search for" value="{{ request.GET.query }}">
+            <button class="btn btn-secondary"><i class="fa fa-search"></i>search</button>
+            <a href="{% url 'backend'%}" class="btn btn-dark" style="margin-left:19px;"><i class="fa fa-refresh"></i></a>
+        </div>
+    </form>
+
+    <centre>
+        <table class="table table-bordered table-sm mt-4 " style="text-align:centre;font-size:12px">
+            <thead class="table-primary">
+                <tr>
+                    <th>case_paper_no</th>
+                    <th>file_no</th>
+                    <th>date</th>
+                    <th>Name</th>
+                    <!--<th>Age</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th>Address</th>
+                    <th>Pin_Code</th>
+                    <th>Telephone</th>
+                    <th>Office</th>-->
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <!--<th>Qualification</th>-->
+                    <th>Reffered_By</th>
+                    <!--<th>diagnosis_provisional</th>-->
+                   <!-- <th>diagnosis_Final</th>
+                    <th>Duration</th>-->
+                    <th>Rx_Taken</th>
+                    <th>Note</th>
+                    <!--<th>Gender</th>
+                    <th>Marital_status</th>
+                    <th>food_type</th>-->
+                    <th colspan="3">Action</th>
+                    
+                </tr>
+            </thead>
+        
+            <!------Data-from-backend---------->
+
+            {% for patient in patients %}
+            <tr id="chk_td">
+                <td>{{patient.case_paper_no}}</td>
+                <td>{{patient.file_no}}</td>
+                <td>{{patient.date}}</td>
+                <td>{{patient.name}}</td>
+                <!--<td>{{patient.age}}</td>
+                <td>{{patient.height}}</td>
+                <td>{{patient.weight}}</td>
+                <td>{{patient.address}}</td>
+                <td>{{patient.pin_code}}</td>
+                <td>{{patient.telephone}}</td>
+                <td>{{patient.office}}</td>-->
+                <td>{{patient.phone}}</td>
+                <td>{{patient.email}}</td>
+               <!-- <td>{{patient.qualification}}</td>
+                <td>{{patient.occupation}}</td>-->
+                <td>{{patient.reffered_by}}</td>
+               <!-- <td>{{patient.diagnosis_provisional}}</td>
+                <td>{{patient.diagnosis_final}}</td>
+                <td>{{patient.duration}}</td>-->
+                <td>{{patient.rx_taken}}</td>
+                <td>{{patient.note}}</td>
+                <!--<td>{{patient.gender}}</td>
+                <td>{{patient.marital_status}}</td>
+                <td>{{patient.food_type}}</td>-->
+                <td>
+                    <a class="btn btn-primary" href="/patient/{{ patient.case_paper_no}}" title="Edit Patients">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="/image/{{patient.case_paper_no}}" title="Gallery">
+                        <i class="fa fa-image"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-secondary" href="/delete_patient/{{ patient.case_paper_no}}" title="Delete Patients">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                        
+            </tr>
+            {% endfor%}
+        </table>
+    </centre>
+
+<!-----------Pagination----------------
+
+                <nav class="mt-4">
+                    {% if patient.has_other_page %}
+                    <ul class="pagination justify-content-left">
+                        {% if patient.has_previous %}
+                        <a href="?page=1" class="btn btn-outline-primary mb-4" style="width:60px; border-radius:1px; border:1px solid #29128d">First</a>
+                        <li class="page-item"><a class="page-link" href="?page={{patient.previous_page_number}}"><i class="fa fa-angle-double-left"></i></a></li>
+                        {% else %}
+                        <li class="page-item disabled"></li>
+                        {% endif %}
+
+                        {% for i in patient.paginater.page_range %}
+                            {% if patient.number == i %}
+                                <li class="page-item active"><span class="page-link">{{ i }}<span class="sr-only"></span></span></li>
+
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                        
+                            {% endif %}
+                        {% endfor %}
+                        {% if patient.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{patient.next_page_number}}"><i class="fa fa-angle-double-right"></i></a></li>
+                        <a href="?page={{ patient.paginator.num_pages}}" class="btn btn-outline-primary mb-4" style="width:60px ; border-radius: 1px; border: 1px solid #29128d; border-left: none;">Last</a>
+                        {% else %}
+                        <li class="page-item disabled"></li>
+                        {% endif %}
+                    </ul>
+                    {% endif %}
+                </nav>
+
+---->
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+            {% if patient.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{patient.previous_page_number}}">Previous</a></li>
+            {% endif %}
+            {% for i in patient.paginator.page_range %}
+            {% if patient.number == i %}
+            <li class="page-item"><a class="page-link" href="#">{{i}}</a></li>
+            {% endif %}
+            {% endfor %}
+            {% if patient.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{patient.next_page_number}}">Next</a></li>
+            {% endif %}
+            </ul>
+        </nav>
+
+
+    {% for message in messages %}
+        {% if message.tags == 'success'%}
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
+        <script>
+            var m="{{message}}";
+            swal("Perfect !",m,"Success")
+        </script>
+        {% endif %}
+    {% endfor %}
+    
+
+<span class="text-danger" id="no_data"></span>
+    </div>
+{% endblock content %}
+

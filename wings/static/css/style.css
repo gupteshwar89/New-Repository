@@ -1,0 +1,14 @@
+#no_data{
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+}
+
+image{
+    text-align: center;
+    -moz-box-align: center;
+    text-decoration: none;
+    text-transform: capitalize;
+}
